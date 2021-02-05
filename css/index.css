@@ -1,0 +1,510 @@
+/* GLOBAL 
+Khi tao bat ky trang web nao luon khai bao cac css global nay truoc, sau do chon font-family*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    /* font-size: 37px; chon mac dinh => 1 rem = 37px */
+}
+/* HEADER */
+header {
+    background-color: #4e2a84;
+    position: fixed; /* fixed + absolute làm mất kích thước của thẻ, mất gì thì set laij, hiện tại mất width => set width */
+    width: 100%;
+    z-index: 100; /* Chỉ có tác dụng đi vs position, vif vấn đề đè lên thẻ khác do position gây ra*/
+} /* THẻ tạo bên dưới có z-index lớn hơn thẻ trên, nên muốn header k bị đè, thay đổi z-index*/
+/* Align Center the con header__content trong the cha header, set header__content co width < width header */
+.header__content {
+    width: 70%;
+    margin: 0 auto;
+    /* Canh giua theo chieu ngang: 1 the con nam giua 1 the cha, dung cho noi dung chinh, phan noi dung nho dung ky thuat khac => dung width + margin*/
+    display: flex;
+    justify-content: space-between;
+    /* flex-container: header__content & flex-item: p va nav*
+    Can chinh noi dung theo chieu ngang */
+    align-items: center;
+    /* can chinh noi dung theo chieu doc*/
+    /* => display, justify-content, align-items di cung nhau cho flex-container*/
+    padding: 15px 0;
+}
+.header__content ul {
+    list-style: none;
+}
+.header__content ul li {
+    display: inline;
+    margin-right: 20px;
+}
+.header__content a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+.header__content a:hover {
+    color: #ff0e83;
+}
+.header__content p {
+    font-size: 37px;
+    color: white;
+}
+/* CAROUSEL */
+.carousel {
+    background-image: url(../img/b3.jpg);
+    background-size: cover;
+    height: 800px;
+    background-position: center;
+    display: flex;
+    justify-content: center; /* Canh thẻ con giữa theo chiều ngang */
+    align-items: center; /* Canh thẻ con ở giữa theo chiều dọc */
+    text-align: center; /* Canh chữ trong thẻ theo chiều ngang */ 
+}
+/* KỸ thuật canh giua, Canh ther luôn ở giữa, buộc 
+không có position absolute 
+thẻ cha chỉ có 1 thẻ con dùng display flex*/
+/* END CAROUSEL */
+.carousel__content {
+    line-height: 2.5;
+}
+.carousel__content h1 {
+    font-size: 5rem;
+}
+.carousel h1 {
+    animation: upDown 3s linear 0s infinite;
+}
+
+/* INTRO  */ 
+/* Khai bao cột cho GRID dùng grid-template-columns (luôn khai baos) 
+Khai báo hàng chỉ cần khi có items cần chiếm theo hàng */
+.intro {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+/* Gôm cột cho các items chiếm nhiều hơn 1 cột */
+    /* Cách 1: grid-column: Đường bắt đầu / đường kết thúc */
+    /* Cách 2: grid-column: Đường bắt đầu / số lượng cột cần chiếm */
+    /* grid-column: 2 / 4; */
+.intro__ab1 {  
+    grid-column: 2 / span 2;  /* Cách 2*/
+}
+.intro__best {
+    grid-column: 1 / span 2;
+}
+.intro__ab4 {
+    grid-column: 3 / span 2;
+}
+/* End gôm cột */
+/* Set img chiếm trọn div */
+.intro__item img {
+    width: 100%;
+    display: block; 
+    /* để đổi tính chất của hình k còn khoảng hở thẻ img
+    Nếu còn khoảng hở theo chiều dọc, height : 100%*/ 
+}
+/* End img trọn div */
+/* Dùng căn text thẻ con (intro__text && img) giữa div cha (intro__item) */
+.intro__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+} 
+.intro_text{
+    width: 80%;
+    text-align: center;
+}
+/* End căn giữa text */
+/* Set background cho các div chưa text*/
+.intro .intro__item:first-child {
+    background-color: #504184;
+    color: white;
+    display: flex;
+}
+.intro .intro__item:nth-child(3) {
+    background-color: #F75582;
+    display: flex;
+    color: white;
+}
+.intro .intro__item:nth-child(4) {
+    background-color: #ED6498;
+} 
+.intro .intro__item:nth-child(6) {
+    background-color: #836EAA;
+} 
+.intro .intro__item:nth-child(8) {
+    background-color: #504184;
+} 
+/* End set background */
+/* END INTRO */
+
+/* number  */
+.number {
+    padding: 70px 0;
+}
+.number__content {
+    width: 70%;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-around;
+}
+.number__item {
+    text-align: center;
+    width: 25%;
+}
+.number__item p {
+    font-weight: 600;
+}
+.number__item p:first-child {
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: #4e2a84;
+}
+.numer__item p:last-child {
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-top: 30px 0;
+    font-weight: 600;
+}
+/* END NUMBER */
+
+/* SERVICE */
+.service {
+    text-align: center;
+    background-image: url(../img/s1.jpg);
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.service__content {
+    display: flex;
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+.service__item {
+    padding: 0 10px;
+}
+.service__item i {
+    font-size: 3rem;
+    color: #504184;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #504184;
+    border-radius: 50%;
+    /* canh icon ở giưa theo chiều ngang 
+    text-align: center */
+    line-height: 100px;
+    /* CAnh giữa icon theo chiều dọc chỉ dùng khi chỉ có 1 hàng chữ, line-height, icon xem như chữ
+    => Icon 1 hàng dùng tex-align:center + line-height: 100px*/
+    /* transition-property: color; */
+    /*transition-duration: 0s; /* thời gian thay đổi */
+    /*transition-delay: 0s; /* thời gian chờ mới xảy ra hiệu ứng, k sử dung */
+    transition: all 0s 0.2s;
+}
+.service__item:hover i {
+    /* cha được rê chuột, thẻ con thay đổi cú pháp */
+    color:  #ff0e83 ;
+}
+.service__item button {
+    padding: 12px 27px;
+    background-color: #ff0e83 ;
+    border: 2px solid white;
+    border-radius: 6px;
+}
+.service__item button:hover{
+    background-color: white;
+    border-color: #ff0e83;
+    color: black;
+    cursor: pointer; /* Báo users bàn tay click được */
+}
+/* END SERVICE */
+
+/* GALLERY */ 
+/* THao tac vs grid css dong het the con nho, chua the cha vs cac item */
+.gallery__content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-gap: 20px; them khoang cach giua cac the con cua grid, giua grid va khung ben ngoai (browser hay section khacs) khong them */
+    gap: 30px;
+    padding: 0 15px; /* them khoang cach grid vs browser*/
+}
+.gallery__item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/* Set img full the div khong khoang cach dung bo 3 thuoc tinh css height width display */
+/* Khi img vua the div, them khoang cach cac the cha sau */
+.gallery__g1 {
+    grid-column: 1 / span 2;
+}
+.gallery__g6 {
+    grid-column: 3 / span 2;
+}
+
+/* POSITION */
+.gallery__item {
+    position: relative; /* the cha relative*/
+}
+.gallery__overlay {
+    position: absolute; /* the cha absolute*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48, 132, 163, 0.2);
+    text-align: right;  
+    padding: 40px 30px;
+    color: white;
+}
+.gallery__overlay span {
+    font-weight: 300;
+}
+.gallery__overlay p {
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+}
+/* before vs after la loai the inline */
+ /* .gallery__item h3::before {
+    content: 'before';
+}
+.gallery__item h3::after {
+    content: 'after';
+}  */
+/* Loaij the inline k set duoc kich thuoc 
+loai block set duoc kich thuoc
+chuyen tinh chat after tu inline sang block*/
+.gallery__item h3::after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    display: block;
+    margin-top: 15px;
+    /* Tao hieu ung khi chua hover */
+    transform: translateY(50px);
+    transition: 0.5s; /* transition k dung chung vs display none vaf display block, dung opacity thay the*/
+    opacity: 0;
+}
+.gallery__item:hover h3::after {
+    transform: translateY(0);
+    opacity: 1;
+}
+.gallery__item h3 {
+    /* tao vi tri khi chua hover */
+    transform: translateY(50px);
+    transition: 0.5s; /* de the nay xay ra hieu ung 2 chieu*/
+}
+.gallery__item:hover h3{
+    /* do di chuyen len khi hover */
+    transform: translateY(0);
+}
+/* the p */
+.gallery__item p {
+    /* tao vi tri khi chua hover */
+    transform: translateY(0px);
+    transition: 0.5s; /* de the nay xay ra hieu ung 2 chieu*/
+    opacity: 0;
+}
+.gallery__item:hover p{
+    /* do di chuyen len khi hover */
+    transform: translateY(-50px);
+    opacity: 1;
+}
+/* BTVN */
+/* END GALLERY */
+
+/* TEAM BAKE */
+.team {
+    background-color: #4e2a84;
+    margin-top: 50px;
+}
+.team__content {
+    width: 70%;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 25px;
+}
+.team__item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.team__item {
+    position: relative;
+}
+
+.team__pink {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #F75582;
+    color: white;
+    height: 30%;
+    opacity: 1;
+    transition: 0.5s;
+}
+.team__item:hover .team__pink {
+    opacity: 0;
+}
+.team__black {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    padding: 30px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.team__item:hover .team__black {
+    opacity: 1;
+}
+/* Day la hieu ung truot h2, muon doi truot ngang translate X, doc translate y*/
+.team__item2 {
+    overflow: hidden; /* che cac the con ma dang ra khoi border cua the cha, the con (team__black) the cha (team_item2)*/
+}
+.team__item2 .team__black{
+    opacity: 1;
+    transform: translateX(-100%);
+}
+.team__item2:hover .team__black {
+    transform: translateX(0);
+}
+/* Day la hieu xoay truot h3 */
+.team__item3 .team__black {
+    /* opacity: 1; */
+    transform: rotate(0);
+}
+.team__item3:hover .team__black {
+    transform: rotateY(360deg);
+}
+/* Hieu ung  */
+.team__item4 .team__black {
+    opacity: 1;
+    transform: scale(0);
+}
+.team__item4:hover .team__black {
+    transform: scale(1);
+}
+/* END TEAM BAKE */
+
+/* CAROUSEL  */
+.feedback {
+    padding: 70px 0;
+}
+.feedback__content {
+    width: 70%;
+    margin: 0 auto;
+    border: 3px solid #ff0e83;
+    padding: 25px; 
+    text-align: center;
+}
+.feedback .owl-theme .owl-dots .owl-dot.active span, .feedback .owl-theme .owl-dots .owl-dot:hover span {
+    background: black;
+}
+/* them class feeback de do uu tien cao hon */
+/* END CAROUSEL */
+
+/* CONTACT FORM */
+.contact h2 {
+    padding: 70px;
+    text-align: center;
+}
+.contact_form form {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 60%;
+    margin: 0 auto;
+    gap: 10px;
+}
+.contact_form textarea {
+    grid-column: 1/ span 2;
+    resize: none; /* Xoa tinh nang resize kich thuoc textarea*/
+}
+.contact_form textarea::placeholder { /* chi thay doi mau cua placholder*/
+    color: red;
+}
+.contact_form button {
+    grid-column: 1/ span 2;
+}
+.contact_form input {
+    /* 1rem = font-size o the html */
+    /* 1em = font-size cua chinh the con do 1em=15px */
+    padding: 1em;
+    font-size: 15px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    transition: 0.5s;
+}
+.contact_form input:focus {
+    
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 0.25);
+}
+
+/* CONTACT MAP  */
+.contact__map iframe {
+    width: 100%;
+}
+
+/* END CONTACT FORM */
+
+/* FOOTER */
+
+/* END FOOTER */
+
+/* BACK TOT OP  */
+.backToTop {
+    width: 80px;
+    height: 80px;
+    font-size: 3rem;
+    text-align: center;
+    line-height: 80px;
+    color: blue;
+    border: 2px solid blue;
+    display: block; /* a la the inline*/
+    border-radius: 50%;
+    position: fixed; /* Mac dinh fixed di theo body */
+    right: 5%;
+    bottom: 7%;
+
+    opacity: 0; /*opacity chay chung vs transition, visibility thi k chay dc vs transition */
+    visibility: hidden; 
+    /* Ẩn nút backtotop */
+}
+.cd-top--is-visible { /*back-to-top button visible*/
+    visibility: visible;
+    opacity: 1;
+}
+
+/* KEYFRAMES */
+@keyframes upDown {
+    /* Khai báo 1 chu kỳ chuyển động */
+    0% {
+
+    }
+    25% {
+        transform: translateY(-50px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(50px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
